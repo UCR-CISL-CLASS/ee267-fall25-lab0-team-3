@@ -187,3 +187,88 @@ finally:
     # Close the OpenCV display window when the game loop stops
     cv2.destroyAllWindows()
     print("Script finished and cleanup performed.")
+
+# --- Additional NPC Vehicles for Context (Optional) ---
+for i in range(50):
+    vehicle_bp = random.choice(bp_lib.filter('vehicle'))
+    npc = world.try_spawn_actor(vehicle_bp, random.choice(spawn_points))
+    if npc:
+        npc.set_autopilot(True)
+
+
+# Retrieve the first image
+world.tick()
+image = image_queue.get()
+
+# Reshape the raw data into an RGB array
+img = np.reshape(np.copy(image.raw_data), (image.height, image.width, 4)) 
+
+# Display the image in an OpenCV display window
+cv2.namedWindow('ImageWindowName', cv2.WINDOW_AUTOSIZE)
+cv2.imshow('ImageWindowName',img)
+cv2.waitKey(1)
+
+
+def point_in_canvas(pos, img_h, img_w):
+    """Return true if point is in canvas"""
+    if (pos[0] >= 0) and (pos[0] < img_w) and (pos[1] >= 0) and (pos[1] < img_h):
+        return True
+    return False
+
+while True:
+    # Retrieve and reshape the image
+    world.tick()
+    image = image_queue.get()
+
+    img = np.reshape(np.copy(image.raw_data), (image.height, image.width, 4))
+
+    # Get the camera matrix 
+    world_2_camera = np.array(camera.get_transform().get_inverse_matrix())
+
+
+    for npc in world.get_actors().filter('*vehicle*'):
+
+        # Filter out the ego vehicle
+        if npc.id != vehicle.id:
+
+            bb = npc.bounding_box
+            dist = npc.get_transform().location.distance(vehicle.get_transform().location)
+
+            # Filter for the vehicles within 50m
+            if dist < 50:
+
+            # Calculate the dot product between the forward vector
+            # of the vehicle and the vector between the vehicle
+            # and the other vehicle. We threshold this dot product
+            # to limit to drawing bounding boxes IN FRONT OF THE CAMERA
+                forward_vec = vehicle.get_transform().get_forward_vector()
+                ray = npc.get_transform().location - vehicle.get_transform().location
+
+                if forward_vec.dot(ray) > 0:
+                    verts = [v for v in bb.get_world_vertices(npc.get_transform())]
+                    for edge in edges:
+                        p1 = get_image_point(verts[edge[0]], K, world_2_camera)
+                        p2 = get_image_point(verts[edge[1]],  K, world_2_camera)
+
+                        p1_in_canvas = point_in_canvas(p1, image_h, image_w)
+                        p2_in_canvas = point_in_canvas(p2, image_h, image_w)
+
+                        if not p1_in_canvas and not p2_in_canvas:
+                            continue
+
+                        ray0 = verts[edge[0]] - camera.get_transform().location
+                        ray1 = verts[edge[1]] - camera.get_transform().location
+                        cam_forward_vec = camera.get_transform().get_forward_vector()
+
+                        # One of the vertex is behind the camera
+                        if not (cam_forward_vec.dot(ray0) > 0):
+                            p1 = get_image_point(verts[edge[0]], K_b, world_2_camera)
+                        if not (cam_forward_vec.dot(ray1) > 0):
+                            p2 = get_image_point(verts[edge[1]], K_b, world_2_camera)
+
+                        cv2.line(img, (int(p1[0]),int(p1[1])), (int(p2[0]),int(p2[1])), (255,0,0, 255), 1)        
+
+    cv2.imshow('ImageWindowName',img)
+    if cv2.waitKey(1) == ord('q'):
+        break
+cv2.destroyAllWindows()
