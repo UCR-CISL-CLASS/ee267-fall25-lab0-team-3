@@ -54,3 +54,7 @@ instance_camera.listen(instance_image_queue.put)
 world.tick()
 instance_image=instance_image_queue.get()
 instance_image.save_to_disk('instance_segmentation.png')
+
+
+
+# this is a test
