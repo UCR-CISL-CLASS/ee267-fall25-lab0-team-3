@@ -56,7 +56,7 @@ for vehicle in world.get_blueprint_library().filter('*vehicle*'):
         blueprints.append(vehicle)
 
 # Set a max number of vehicles and prepare a list for those we spawn
-max_vehicles = 50
+max_vehicles = 30
 max_vehicles = min([max_vehicles, len(spawn_points)])
 vehicles = []
 
