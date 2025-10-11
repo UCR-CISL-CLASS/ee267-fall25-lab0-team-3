@@ -30,8 +30,8 @@ spawn_points = world.get_map().get_spawn_points()
 spectator = world.get_spectator()
 
 # Set the camera to some location in the map
-cam_location = carla.Location(x=-46., y=152, z=18)
-cam_rotation = carla.Rotation(pitch=-21, yaw=-93.4, roll=0)
+cam_location = carla.Location(x=-83., y=20, z=18)
+cam_rotation = carla.Rotation(pitch=-21, yaw=0, roll=0)
 camera_transform = carla.Transform(location=cam_location, rotation=cam_rotation)
 spectator.set_transform(camera_transform)
 
