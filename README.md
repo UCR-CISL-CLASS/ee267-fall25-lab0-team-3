@@ -37,19 +37,15 @@ After entering the url into your browser, you will see a webpage similar to this
 Click on "Connect" and enter the password given in the email. Once logged in,
 you will see a screen and will be prompted to enter your password again. After doing so, you will now be fully logged in. And are now ready to start using Carla!
 
-
-
-
 ## 2. Installing Carla locally on Machine ##
 
 This step is more difficult as it requires an manual install of Carla and hardware powerful enough to run
 it. 
-
-### Hardware Requirements ###
-
-
+We recommend following the instructions [here](https://carla.readthedocs.io/en/latest/start_quickstart/)
+for installing Carla. However, if you want to use our prebuilt docker image, follow these steps posted [here](https://github.com/UCR-CISL/Carla-dockers)
 
 # Create & Source Environment #
+
 
 
 # Install Required Libraries/Dependencies #
