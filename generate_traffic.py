@@ -20,6 +20,7 @@ import random
 
 # Connect to the local client and retrieve the world object
 client = carla.Client('localhost', 2000)
+world = client.load_world('Town03')
 world = client.get_world()
 
 # Set up the simulator in synchronous mode
