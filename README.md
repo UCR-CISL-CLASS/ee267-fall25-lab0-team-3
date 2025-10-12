@@ -56,7 +56,7 @@ These scripts allow you to control a vehicle in the CARLA environment, either ma
 
 **Manual Control**:<br>To drive the car yourself using the keyboard, run the following command:
 ```
-python manual_control.py
+python3 manual_control.py
 ```
 *For those that chose option 2, you will have to add `vglrun` before python to run this script.*
 
@@ -65,7 +65,7 @@ A Pygame window will open, and you can use the arrow keys or WASD to control the
 **Automatic Control**: <br>
 To see an autonomous agent, run this script:
 ```
-python automatic_control.py
+python3 automatic_control.py
 ```
 *Again, for those that chose option 2, you will have to add `vglrun` before python to run this script.*
 
@@ -76,11 +76,59 @@ This part of the lab demonstrates how to use the CARLA Traffic Manager to popula
 
 To generate traffic, you wil run:
 ```
-python generate_traffic.py
+python3 generate_traffic.py
 ```
 Here 30 vehicles will be spawned into the scene in using the Traffic Manager by taking a random sample of currently available spawn points on the map. The using the `try_spawn_actor()` function to spawn the vechiles then set setting the vehicles `set_autopilot()` method to `True`
 
-### Part 4: Bounding Boxes ###]
+### Part 4: Bounding Boxes ###
 
 A key aspect of autonomous driving is object detection. These scripts show how to generate 3D bounding boxes for vehicles and other objects in the simulation and project them onto the 2D camera view. 
+
+**Generate Bounding Boxes for Traffic Lights and Signs**
+
+This script will draw bounding boxes for traffic lights and signs in the camera's view.
+```
+python3 generate_sign_boxes.py
+```
+You should see a OpenCV window with red boxes drawn on traffic lights/signs. 
+
+![Image](/images/BoundingBox2.png)
+
+**Generate Bounding Boxes for Vehicles and Pedestrians**
+
+This script will draw bounding boxes for vehicles and pedestrians on the road in the camera's view.
+
+```
+python3 generate_vehicle_boxes.py
+```
+You should see a OpenCV window with blue boxes drawn on vehicles and people on bikes.
+![Image](/images/BoundingBox5.png) 
+
+**Generate Bounding Boxes for All Objects**
+
+This script will spawn a vehicle with a camera and draw bounding boxes for all other vehicles and traffic signs in the camera's view.
+```
+python3 generate_all_boxes.py
+```
+![Image](/images/BoundingBox8.png) 
+
+**Exporting Bounding Boxes (PASCAL VOC format)**
+
+To save the bounding box information in the PASCAL VOC XML format, which is commonly used for training object detection models, run:
+```
+python3 generate_VOC_files.py
+```
+This will create an `output` directory containing the captured images and their corresponding XML annotation files in side of your current path.
+
+### Part 5: Instance Segmentation ###
+
+nstance segmentation provides a more detailed understanding of the scene by assigning a unique ID to each object instance. This is different from semantic segmentation, which only classifies pixels by object type (e.g., "car," "road"). 
+
+**To generate an instance segmentation image, run:**
+```
+python3 segmentation.py
+```
+This script will spawn an instance segmentation camera, populate the scene with vehicles, and save the resulting image as `instance_segmentation.png`.
+
+![Image](/images/instance_segmentation(3).png)
 
