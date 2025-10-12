@@ -1,55 +1,30 @@
-# EE267_LAB0: Access Carla
+# EE267 LAB0: Access Carla and Using Carla
 
-First steps will be to install Carla onto the system or to access Carla via
-the web portal. We will go over the steps required for each. 
+This repository contains the code and resources for EE267 Lab 0, which focuses on setting up the CARLA simulator and getting familiar with its basic functionalities. This README provides a comprehensive guide on how to run the provided scripts and what to expect from each of them.
 
-## 1. Accessing Carla via Web Portal ##
-First step is to go UCR Library website and install the schools VPN. This allows for access
-to the server while not being on the schools WiFi. 
-[You can view the instructions here to install the VPN](https://library.ucr.edu/using-the-library/technology-equipment/connect-from-off-campus)
+## 1. Environment Setup ##
+Before running any of the scripts, you need to have a working CARLA environment. You have a few options to get this set up:
 
-After the VPN is installed you will need to navigate to your Global Protect VPN in the icon
-bar. It should look like this:
+* Option 1: Local Installation (Recommended for powerful machines): If you have a machine with a performant GPU (>8GB of memory), you can install CARLA locally. We recommend using our pre-built Docker image for a smoother setup. You can find the instructions [here](https://github.com/UCR-CISL/Carla-dockers). 
 
+* Option 2: University Resources: You can also use the BCOE GPU machines or the Nautilus National Research Platform (NRP), though these may have limited availability or occasional performance issues. 
 
-<p align="center">
-  <img src="images/global_protect_pic.png" alt="Global Protect icon" />
-</p>
+Once you have CARLA running, you'll need to set up a Python environment to interact with it.
 
-After clicking on the icon, you will enter
+* Clone the Repository: Navigate to your CARLA installation folder in your terminal and clone this repository:
+
+```python
+cd /path/to/your/carla/root
+git clone https://github.com/UCR-CISL/ee267-fall25-lab0-team-3.git
 ```
-    campusvpn.ucr.edu
+* Create a Python 3.7 environment: It's recommended to use conda for this.
 ```
-Then click on "Connect". You will then have to enter your standard UCR login credentials.
-The username is your UCR email address (e.g. jsmith@ucr.edu) and password is your UCR password.
-
-Once connected, you will see a new network connection called "campusvpn.ucr.edu".
-Now that we are connected to the school's VPN, we can now connect to the Carla server.
-
-To do so, you will refer to the email provided by the TA with the server URL and password.
-The email will look something like this: https://rtx-"enter port here".cs.ucr.edu/
-
-After entering the url into your browser, you will see a webpage similar to this:
-<p align="center">
-  <img src="images/NoVNC.png" alt="Carla Web Portal" />
-</p>
-
-Click on "Connect" and enter the password given in the email. Once logged in,
-you will see a screen and will be prompted to enter your password again. After doing so, you will now be fully logged in. And are now ready to start using Carla!
-
-## 2. Installing Carla locally on Machine ##
-
-This step is more difficult as it requires an manual install of Carla and hardware powerful enough to run
-it. 
-We recommend following the instructions [here](https://carla.readthedocs.io/en/latest/start_quickstart/)
-for installing Carla. However, if you want to use our prebuilt docker image, follow these steps posted [here](https://github.com/UCR-CISL/Carla-dockers)
-
-# Create & Source Environment #
+conda create -n carla python=3.7
+conda activate carla
+```
+Those that have choosen option 2 and went with the University BCOE machines will skip this step.
 
 
+## 2. Running the Project Files ##
 
-# Install Required Libraries/Dependencies #
-
-
-# Running Project Files #
 
