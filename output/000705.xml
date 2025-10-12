@@ -1,0 +1,59 @@
+<annotation>
+    <folder>output</folder>
+    <filename>000705.png</filename>
+    <path>/home/kam/carla_packed_linux/CARLA_0.9.16/ee267-fall25-lab0-team-3/output/000705.png</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>800</width>
+        <height>600</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>vehicle</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>471</xmin>
+            <ymin>311</ymin>
+            <xmax>499</xmax>
+            <ymax>353</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>vehicle</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>605</xmin>
+            <ymin>313</ymin>
+            <xmax>630</xmax>
+            <ymax>328</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>vehicle</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>265</xmin>
+            <ymin>305</ymin>
+            <xmax>345</xmax>
+            <ymax>333</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>vehicle</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>342</xmin>
+            <ymin>297</ymin>
+            <xmax>417</xmax>
+            <ymax>335</ymax>
+        </bndbox>
+    </object>
+</annotation>
