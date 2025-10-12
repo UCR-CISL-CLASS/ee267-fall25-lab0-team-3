@@ -11,25 +11,25 @@ Before running any of the scripts, you need to have a working CARLA environment.
 
 Once you have CARLA running, you'll need to set up a Python environment to interact with it.
 
-* Clone the Repository: Navigate to your CARLA installation folder in your terminal and clone this repository:
+**Clone the Repository**: Navigate to your CARLA installation folder in your terminal and clone this repository:
 
 ```
 cd /path/to/your/carla/root
 git clone https://github.com/UCR-CISL/ee267-fall25-lab0-team-3.git
 ```
-* Create a Python 3.10 environment: It's recommended to use `conda` for this.
+**Create a Python 3.10 environment**: It's recommended to use `conda` for this.
 ```python
 conda create -n carla python=3.10
 conda activate carla
 ```
 Those that have choosen option 2 and went with the University BCOE machines will skip this step.
 
-* Install the CARLA client library: this can be done using `pip`
+**Install the CARLA client library**: this can be done using `pip`
 
 ```
 pip install carla
 ```
-* Install other required libraries:
+**Install other required libraries**:
 ```
 pip install pygame numpy opencv-python pascal-voc-writer
 ```
