@@ -13,12 +13,12 @@ Once you have CARLA running, you'll need to set up a Python environment to inter
 
 * Clone the Repository: Navigate to your CARLA installation folder in your terminal and clone this repository:
 
-```python
+```
 cd /path/to/your/carla/root
 git clone https://github.com/UCR-CISL/ee267-fall25-lab0-team-3.git
 ```
 * Create a Python 3.10 environment: It's recommended to use `conda` for this.
-```
+```python
 conda create -n carla python=3.10
 conda activate carla
 ```
@@ -37,3 +37,32 @@ pip install pygame numpy opencv-python pascal-voc-writer
 ## 2. Running the Project Files ##
 
 With the environment set up, you can now run the different Python scripts included in this repository. Each script is designed to demonstrate a specific feature of the CARLA simulator.
+
+**Important Note: Make sure the CARLA simulator is running before executing any of the Python scripts to avoid connection errors.**
+
+### Part 1 & 2: Driving the Car (Manual and Automatic Control)
+
+These scripts allow you to control a vehicle in the CARLA environment, either manually or through an autonomous agent. 
+
+* Manual Control:<br>To drive the car yourself using the keyboard, run the following command:
+```
+python manual_control.py
+```
+A Pygame window will open, and you can use the arrow keys or WASD to control the vechile. Other controls and functions are listed in the terminal window where you launched this python file. 
+
+* Automatic Control: <br>
+To see an autonomous agent, run this script:
+```
+python automatic_control.py
+```
+This will spawn a vehicle that navigates the environment on its own.
+
+### Part 3: Generating Traffic###
+This part of the lab demonstrates how to use the CARLA Traffic Manager to populate the simulation with other vehicles and pedestrians, creating a more realistic and dynamic environment. 
+* To generate traffic, you wil run:
+```
+python generate_traffic.py
+```
+Here 30 vehicles will be spawned into the scene in using the Traffic Manager by taking a random sample of currently available spawn points on the map. The using the `try_spawn_actor()` function to spawn the vechiles then set setting the vehicles `set_autopilot()` method to `True`
+
+
