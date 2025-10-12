@@ -128,7 +128,7 @@ nstance segmentation provides a more detailed understanding of the scene by assi
 ```
 python3 segmentation.py
 ```
-This script will spawn an instance segmentation camera, populate the scene with vehicles, and save the resulting image as `instance_segmentation.png`.
+This script will spawn an instance segmentation camera, populate the scene with vehicles, and save the resulting image as `instance_segmentation.png`in your current path directory.
 
 ![Image](/images/instance_segmentation(3).png)
 
