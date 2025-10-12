@@ -40,29 +40,47 @@ With the environment set up, you can now run the different Python scripts includ
 
 **Important Note: Make sure the CARLA simulator is running before executing any of the Python scripts to avoid connection errors.**
 
+This can be done by performing the following:
+```
+./CarlaUE4.sh
+```
+This will launch a instance of Carla.
+However if you wish to run Carla in the packground you will add the `--RenderOffScreen` argument and it will look like the following
+```
+./CarlaUE4.sh --RenderOffScreen
+```
+
 ### Part 1 & 2: Driving the Car (Manual and Automatic Control)
 
 These scripts allow you to control a vehicle in the CARLA environment, either manually or through an autonomous agent. 
 
-* Manual Control:<br>To drive the car yourself using the keyboard, run the following command:
+**Manual Control**:<br>To drive the car yourself using the keyboard, run the following command:
 ```
 python manual_control.py
 ```
+*For those that chose option 2, you will have to add `vglrun` before python to run this script.*
+
 A Pygame window will open, and you can use the arrow keys or WASD to control the vechile. Other controls and functions are listed in the terminal window where you launched this python file. 
 
-* Automatic Control: <br>
+**Automatic Control**: <br>
 To see an autonomous agent, run this script:
 ```
 python automatic_control.py
 ```
+*Again, for those that chose option 2, you will have to add `vglrun` before python to run this script.*
+
 This will spawn a vehicle that navigates the environment on its own.
 
-### Part 3: Generating Traffic###
-This part of the lab demonstrates how to use the CARLA Traffic Manager to populate the simulation with other vehicles and pedestrians, creating a more realistic and dynamic environment. 
-* To generate traffic, you wil run:
+### Part 3: Generating Traffic ###
+This part of the lab demonstrates how to use the CARLA Traffic Manager to populate the simulation with other vehicles and pedestrians, creating a more realistic and dynamic environment.<br>
+
+To generate traffic, you wil run:
 ```
 python generate_traffic.py
 ```
 Here 30 vehicles will be spawned into the scene in using the Traffic Manager by taking a random sample of currently available spawn points on the map. The using the `try_spawn_actor()` function to spawn the vechiles then set setting the vehicles `set_autopilot()` method to `True`
 
+### Part 4: Bounding Boxes ###]
+
+A key aspect of autonomous driving is object detection. These scripts show how to generate 3D bounding boxes for vehicles and other objects in the simulation and project them onto the 2D camera view. 
 
